@@ -1,0 +1,23 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <h1>Your Cart</h1>
+  {% if cart and cart.items.count %}
+    <table class="table">
+      <thead><tr><th>Product</th><th>Qty</th><th>Price</th><th></th></tr></thead>
+      <tbody>
+        {% for item in cart.items.all %}
+          <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ item.product.price }}</td>
+            <td><a href="/cart/remove/{{ item.id }}/" class="btn btn-sm btn-danger">Remove</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/checkout/" class="btn btn-success">Checkout</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+{% endblock %}

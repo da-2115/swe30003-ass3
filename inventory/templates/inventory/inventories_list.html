@@ -1,0 +1,15 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Inventories - SWE30003{% endblock %}
+
+{% block content %}
+<h1>Inventories</h1>
+<div class="list-group">
+  {% for inv in inventories %}
+    <div class="list-group-item">
+      <h5>{{ inv.name }}</h5>
+      <p>{{ inv.products.count }} products</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

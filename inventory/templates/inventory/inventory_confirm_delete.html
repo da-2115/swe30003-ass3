@@ -1,0 +1,10 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <h1>Delete Inventory</h1>
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <form method="post">{% csrf_token %}
+    <button class="btn btn-danger" type="submit">Yes, delete</button>
+    <a class="btn btn-secondary" href="/inventories/">Cancel</a>
+  </form>
+{% endblock %}

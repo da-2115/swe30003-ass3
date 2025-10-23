@@ -1,0 +1,15 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <h1>Invoice {{ invoice.id }}</h1>
+  <p>Order: {{ invoice.order.id }}</p>
+  <p>Issued: {{ invoice.issued_at }}</p>
+  <p>Paid: {{ invoice.paid }}</p>
+  <h3>Items</h3>
+  <ul>
+    {% for item in invoice.order.items.all %}
+      <li>{{ item.product.name }} — {{ item.quantity }} × ${{ item.unit_price }}</li>
+    {% endfor %}
+  </ul>
+  <a class="btn btn-primary" href="/invoice/{{ invoice.id }}/pay/">Record payment</a>
+{% endblock %}

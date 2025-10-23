@@ -1,0 +1,25 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Products - SWE30003{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+<div class="row">
+  {% for p in products %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ p.name }}</h5>
+        <p class="card-text">{{ p.description|default:'No description' }}</p>
+        <p class="card-text"><strong>${{ p.price }}</strong></p>
+        <a href="/products/{{ p.id }}/" class="btn btn-primary">View</a>
+        <a href="/cart/add/{{ p.id }}/" class="btn btn-outline-success">Add to cart</a>
+        {% if request.user.is_staff %}
+          <a href="/products/{{ p.id }}/edit/" class="btn btn-secondary">Edit</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

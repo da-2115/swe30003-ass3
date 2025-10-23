@@ -1,0 +1,12 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Invoices - SWE30003{% endblock %}
+
+{% block content %}
+<h1>Invoices</h1>
+<div class="list-group">
+  {% for inv in invoices %}
+    <a class="list-group-item list-group-item-action" href="/invoices/{{ inv.id }}/">{{ inv }}</a>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <h1>{{ report.name }}</h1>
+  <pre>{{ report.data|default:'No data' }}</pre>
+{% endblock %}

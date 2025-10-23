@@ -1,0 +1,10 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <h1>Reports</h1>
+  <ul>
+    {% for r in reports %}
+      <li><a href="/reports/{{ r.id }}/">{{ r.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
